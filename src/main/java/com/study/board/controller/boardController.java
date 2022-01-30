@@ -4,11 +4,12 @@ import com.study.board.entity.Board;
 import com.study.board.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-@Controller //spring이 이게 controller라는 것을 알게 하는 어토테이션
+@Controller //[spring] 이게 controller라는 것을 알게 하는 어토테이션
 public class boardController {
 
     @Autowired
@@ -18,13 +19,18 @@ public class boardController {
     public String boardWriteForm() {
 
             return "boardwrite"; // 따옴표 안에, 어떤 html파일로 이동할건 지 파일명 넣기
-
     }
 
     @PostMapping("/board/writeprocess")
     public String boardWriteProcess(Board board) {
 
         boardService.write(board);
-        return "";
+        return "/board";
+    }
+
+    @GetMapping("/board/list")
+    public String boardList(Model model) { // [spring] 데이터를 담아서 페이지로 보내줄 때 쓰는 Model
+        model.addAttribute("list", boardService.boardList()); // 2인자를 1이름을 붙여 넘기겠다는 표현
+        return "boardlist";
     }
 }
