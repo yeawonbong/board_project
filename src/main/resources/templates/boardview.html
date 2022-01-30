@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1 th:text="${board.title}"> 제목입니다 </h1> <!-- [thymeleaf] 내용에 해당 환경변수를 불러오는 문법 -->
+    <br>
+    <p th:text="${board.content}"> 내용이 들어갈 부분입니다 </p>
+    <a th:href="@{/board/delete(id=${board.id})}">글 삭제</a> <!-- @{} 안에 처음에 '/' 꼭 붙이기 유의-->
+
+<!--    <form th:action="@{/board/modify/{id}(id=${board.id})}" method="post"> &lt;!&ndash;작성 버튼 눌러서 submit 시 해당 url page로 감&ndash;&gt;-->
+<!--        <input name="title" type="text">-->
+<!--        <textarea name="content"></textarea>-->
+<!--        <button th:href="">수정</button> &lt;!&ndash;버튼 누르면 submit됨&ndash;&gt;-->
+<!--    </form>-->
+    <a th:href="@{/board/modify/{id}(id = ${board.id})}">수정</a>
+</body>
+</html>

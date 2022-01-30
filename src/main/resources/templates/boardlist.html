@@ -25,7 +25,10 @@
             <tbody>
                 <tr th:each="board : ${list}"> <!-- each -> 반복문, board에서 list가 없어질 때까지 반복한다-->
                     <td th:text="${board.id}">1</td>
-                    <td th:text="${board.title}">제목입니다</td>
+                    <td>
+                        <a th:text="${board.title}" th:href="@{/board/view(id=${board.id})}"></a>
+                                                    <!-- [thymleaf] 하이퍼링크 <a>태그 추가, 고유 id 환경변수로 해서 넘어가는거 -->
+                    </td>
                 </tr>
             </tbody>
         </table>
