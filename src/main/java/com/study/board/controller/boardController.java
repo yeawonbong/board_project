@@ -1,17 +1,25 @@
 package com.study.board.controller;
 
+import com.study.board.entity.Board;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller //spring이 이게 controller라는 것을 알게 하는 어토테이션
 public class boardController {
 
-    @GetMapping("/") // localhost:8080로 '/' 경로로 들어왔을 때 (안붙여도 브라우저에서 슬래시 붙여준다)
-    @ResponseBody       // 글자를 그대로 띄워줄 수 있게끔 해주는 어노테이션
-    public String main() {
+    @GetMapping("/board/write") // 어떤 url로 접속하게 할거냐 매핑해주는 어노테이션 --> localhost:8080/board/write로 접속하면 boardwrite 페이지를 보여주겠다는 것!
+    public String boardWriteForm() {
 
-        return "Hello World";
+            return "boardwrite"; // 따옴표 안에, 어떤 html파일로 이동할건 지 파일명 넣기
 
+    }
+
+    @PostMapping("/board/writeprocess")
+    public String boardWriteProcess(Board board) {
+        System.out.println("제목: " + board.getTitle());
+        System.out.println("내용: " + board.getContent());
+        return "";
     }
 }

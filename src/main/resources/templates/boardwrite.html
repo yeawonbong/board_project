@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>게시물 작성폼</title>
+</head>
+
+<style>
+    .layout {
+        width: 500px;
+        margin: 0 auto;
+        margin-top: 40px;
+    }
+    .layout input, textarea {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .layout textarea {
+        width: 100%;
+        margin-top: 10px;
+        min-height: 300px;
+    }
+</style>
+
+<body>
+    <div class="layout">
+        <form action="/board/writeprocess" method="post"> <!--작성 버튼 눌러서 submit 시 해당 url page로 감-->
+            <input name="title" type="text">
+            <textarea name="content"></textarea>
+            <button type="submit">작성</button> <!--버튼 누르면 submit됨-->
+        </form>
+    </div>
+</body>
+</html>
