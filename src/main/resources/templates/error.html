@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h3> 제목, 내용을 입력해주세요 </h3> <!-- [thymeleaf] 내용에 해당 환경변수를 불러오는 문법 -->
+    <br>
+    <form action="/board/write" method="get"> <!--작성 버튼 눌러서 submit 시 해당 url page로 감-->
+        <button type="submit">작성하기</button> <!--버튼 누르면 submit됨-->
+    </form>
+    <a th:href="@{/board/modify/{id}(id = ${board.id})}">수정</a>
+</body>
+</html>

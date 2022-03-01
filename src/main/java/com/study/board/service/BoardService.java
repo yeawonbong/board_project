@@ -14,10 +14,14 @@ public class BoardService {
     private BoardRepository boardRepository;
 
     // 작성된 글 처리
-    public void write(Board board) {
+    public boolean write(Board board) {
 
+        if (board.getContent() == "" || board.getTitle() == "") {
+            System.out.println("ERROR나옴");
+            return false;
+        }
         boardRepository.save(board);
-
+        return true;
     }
 
     // 게시물 리스트 불러오기 처리

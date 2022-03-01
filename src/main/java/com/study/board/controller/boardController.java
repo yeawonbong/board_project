@@ -25,7 +25,8 @@ public class boardController {
     @PostMapping("/board/writeprocess")
     public String boardWriteProcess(Board board) {
 
-        boardService.write(board);
+        if (boardService.write(board) == false)
+            return "redirect:/board/error";
         return "redirect:/board/list";
     }
 
